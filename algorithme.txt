@@ -1,0 +1,14 @@
+Info : valeur keyCode haut(38),bas(40),entrée(13)
+
+1) Faire une requête à chaque caractére écrit afin de proposer une liste de suggestion : fonction liée au keyup
+2)Utiliser la fonction abort() pour définir un interval de recherche pour éviter d'envoyer des informations dépassées
+*3)Coté serveur nous allons faire un script de recherche
+ * a)rechercher des villes correspondant aux lettres entrées dans le champ de recherche
+  *b)recupérer le contenu de towns.txt avec la fonction file_get_contents() puis le convertir en tant que tableau PHP avec unseriliaze()
+  *c)Le tableau obtenu parcouru à la recherche de résultats en en cohérence avec les caractéres tapés par le user. On aura besoin d'une boucle et de la fonction count() pour obtenir le nbre éléments ds le tableau
+  *d)Utiliser stripos() pour voir si notre index du tableau correspond à notre recherche(stripos() permet de vérifier une si string contient certains caractéres et sans tenir de la casse),
+  *e)Si on trouve un resultat en cohérence avec la recherche alors ajoutez-le à un tableau (au tableau préalablement créé) grace à la fonction array_push(),
+  *f)Une fois le tableau obtenu trier les résultats avec sort() puis renvoyer les données au client en format texte,
+  *g)Utiliser '|' pour séparer le nom d'une ville qui nous permet de renvoyer un texte brut avec la fonction implode(),
+  h)Après retourner le tout avec echo() et analyser cela qu coté JS
+  i)S'il click sur une des suggestion on change automatiquement le contenu du champ de saisi avec le contenu du div sélectionné, on cache les resultats de suggestion
