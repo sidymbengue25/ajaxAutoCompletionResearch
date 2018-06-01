@@ -1,4 +1,8 @@
 (function(){
+  /**
+   * Choisir une suggestion
+   * @param  {HTMLElement} suggest [description]
+   */
   let chooseSuggestion=suggest=>{
     inputSearch.value=previousValue=suggest;
     results.innerHTML='';
@@ -6,6 +10,10 @@
     focusedSuggest=-1;
     inputSearch.focus();
   };
+  /**
+   * Elle traite less données reçues de la requéte et ainsi les envoyer à l'utilisateur
+   * @param  {array} text liste des résultats
+   */
   let getResponses=(text)=>{
     results.innerHTML='';
     let divs='';
@@ -28,6 +36,11 @@
       results.style.display='none';
     };
   };
+  /**
+   * Elle permet de faire des requetes ajax au niveau de serveur.php
+   * @param  {String} elem [description]
+   * @return {object}
+   */
 let autoComplete=(elem) =>{
   let xhr=new XMLHttpRequest();
   let textEntered=encodeURIComponent(elem);
@@ -35,6 +48,9 @@ let autoComplete=(elem) =>{
   xhr.onload=()=>{
     let result=xhr.responseText.split('|');
     if(result.length>0){
+      /**
+       * Elle envoie les données recues à getResponses() pour qu'elle fasse les traitements
+       */
       getResponses(result);
     }
   };
@@ -48,6 +64,9 @@ let previousValue=inputSearch.value,previousReq;
 inputSearch.addEventListener('keyup',e=>{
   e.preventDefault();
   var childs=results.getElementsByTagName('div');
+  /**
+   * Gestion des touches : entrée up et down du clavier
+   */
   if(e.keyCode==38&&focusedSuggest>-1){
     childs[focusedSuggest--].setAttribute('id','');
     if(focusedSuggest>-1){

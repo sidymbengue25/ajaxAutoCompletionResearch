@@ -1,6 +1,5 @@
 <?php
-$towns=unserialize(file_get_contents('towns.txt'));/*
-var_dump($towns);*/
+$towns=unserialize(file_get_contents('towns.txt'));
 sort($towns);
 $resultList=array();
 $nbrElements=count($towns);
@@ -13,10 +12,8 @@ if(isset($_GET['search']) and !empty($_GET['search'])){
       $error='Null';
     }
   }
-  $resultToShow=implode('|', $resultList);/*
-  var_dump($resultToShow);*/
+  $resultToShow=implode('|', $resultList);
   echo $resultToShow;
 }else{
- /* echo 'Aucun résultat trouvé';*/
 }
 ?>
